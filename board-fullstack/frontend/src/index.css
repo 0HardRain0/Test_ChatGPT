@@ -1,0 +1,212 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: #f5f6f8;
+  color: #222;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+}
+
+/* 버튼 */
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #ccd;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f0f1f4;
+}
+
+.btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-danger {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.btn-danger:hover {
+  background: #fef2f2;
+}
+
+/* 목록 */
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-table th,
+.post-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.post-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.post-table a {
+  color: #222;
+  text-decoration: none;
+}
+
+.post-table a:hover {
+  text-decoration: underline;
+}
+
+.col-id {
+  width: 60px;
+  color: #777;
+}
+
+.col-author {
+  width: 110px;
+}
+
+.col-date {
+  width: 170px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* 상세 */
+.post-detail {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.post-detail h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.meta {
+  color: #777;
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.content {
+  white-space: pre-wrap;
+  min-height: 120px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+/* 폼 */
+.post-form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.post-form h1 {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+}
+
+.post-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.post-form input,
+.post-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #ccd;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.post-form input:disabled {
+  background: #f3f4f6;
+  color: #777;
+}
+
+.field-error {
+  display: block;
+  margin-top: 4px;
+  color: #dc2626;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+/* 상태 메시지 */
+.status {
+  text-align: center;
+  color: #777;
+  padding: 40px 0;
+}
+
+.status.error {
+  color: #dc2626;
+}
+
+/* 좁은 화면에서는 날짜 열 숨김 */
+@media (max-width: 600px) {
+  .col-date {
+    display: none;
+  }
+}

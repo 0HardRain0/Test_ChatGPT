@@ -1,0 +1,16 @@
+# Environment variables (API keys etc.)
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+build/
+dist/
+
+# Java / Maven
+target/
+
+# Python
+__pycache__/
+*.pyc
