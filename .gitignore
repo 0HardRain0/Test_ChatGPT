@@ -6,6 +6,10 @@
 # Node
 node_modules/
 build/
+dist/
+
+# Java / Maven
+target/
 
 # Python
 __pycache__/
