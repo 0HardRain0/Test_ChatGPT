@@ -4,7 +4,8 @@ function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
-  const API_KEY = 'e017a366fa7438634b996223f898a108'; // Replace with your own OpenWeatherMap API key
+  // Set REACT_APP_OPENWEATHER_API_KEY in a .env file (see .env.example)
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
   const fetchWeatherData = async () => {
     try {
