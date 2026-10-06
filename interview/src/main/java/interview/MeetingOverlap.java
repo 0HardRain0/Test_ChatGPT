@@ -1,4 +1,4 @@
-package ds.interview;
+package interview;
 
 import java.util.Arrays;
 
