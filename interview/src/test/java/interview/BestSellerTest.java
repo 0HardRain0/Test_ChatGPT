@@ -13,10 +13,12 @@ class BestSellerTest {
     @Test
     void 면접_예시_합계_기준() {
         String[] orders = {"apple 3", "banana 1", "apple 2", "cherry 5", "banana 2"};
-        // apple 5, banana 3, cherry 5 → 동점, 둘 중 하나
-        String result = bestSeller(orders);
-        assertTrue(result.equals("apple") || result.equals("cherry"), "got " + result);
-        assertEquals(result, bestSellerWithMerge(orders));   // 두 구현이 같은 답 (HashMap 순회 순서가 같으므로)
+        // apple 5, banana 3, cherry 5 → 동점. "아무거나"가 규칙이므로 두 구현이 서로 다른 쪽을 골라도 된다.
+        // (처음엔 두 구현이 같은 답을 낸다고 단정했다가 실패 — 동점 규칙을 테스트에도 그대로 적용해야 한다)
+        String a = bestSeller(orders);
+        String b = bestSellerWithMerge(orders);
+        assertTrue(a.equals("apple") || a.equals("cherry"), "got " + a);
+        assertTrue(b.equals("apple") || b.equals("cherry"), "got " + b);
     }
 
     @Test
