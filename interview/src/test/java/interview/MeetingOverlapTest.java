@@ -1,9 +1,9 @@
-package ds.interview;
+package interview;
 
 import org.junit.jupiter.api.Test;
 
-import static ds.interview.MeetingOverlap.hasOverlap;
-import static ds.interview.MeetingOverlap.hasOverlapBruteForce;
+import static interview.MeetingOverlap.hasOverlap;
+import static interview.MeetingOverlap.hasOverlapBruteForce;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,9 +1,9 @@
-package ds.interview;
+package interview;
 
 import org.junit.jupiter.api.Test;
 
-import static ds.interview.MostActiveUser.mostActiveUser;
-import static ds.interview.MostActiveUser.mostActiveUserClassic;
+import static interview.MostActiveUser.mostActiveUser;
+import static interview.MostActiveUser.mostActiveUserClassic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
