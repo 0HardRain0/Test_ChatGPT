@@ -16,8 +16,7 @@ board-fullstack/
 ```bash
 # 터미널 1 — 백엔드
 cd board-fullstack/backend
-./mvnw spring-boot:run        # Windows: mvnw.cmd spring-boot:run
-#  또는 mvn spring-boot:run
+./gradlew bootRun             # Windows: gradlew.bat bootRun
 
 # 터미널 2 — 프론트엔드
 cd board-fullstack/frontend
@@ -29,7 +28,7 @@ npm run dev
 
 - API만 직접 확인: http://localhost:8080/api/posts
 - DB 내용 확인: http://localhost:8080/h2-console (JDBC URL: `jdbc:h2:mem:boarddb`, 사용자 `sa`, 비밀번호 없음)
-- 백엔드 테스트: `cd backend && mvn test`
+- 백엔드 테스트: `cd backend && ./gradlew test`
 
 ## API
 
