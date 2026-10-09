@@ -5,7 +5,7 @@ Java 백엔드와 React 프론트엔드가 REST API로 통신하는 구조를 �
 
 ```
 board-fullstack/
-├── backend/    Spring Boot 3, JPA, H2 인메모리 DB   → http://localhost:8080
+├── backend/    Spring Boot 4, JPA, H2 인메모리 DB   → http://localhost:8080
 └── frontend/   Vite + React 18 + react-router      → http://localhost:5173
 ```
 
