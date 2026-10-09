@@ -8,8 +8,9 @@ node_modules/
 build/
 dist/
 
-# Java / Maven
+# Java / Maven / Gradle
 target/
+.gradle/
 
 # Python
 __pycache__/

@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = '공부용 게시판 REST API'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // REST API (내장 Tomcat + Spring MVC + Jackson JSON)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // JPA (Hibernate) — 자바 객체를 DB 테이블에 매핑
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // 요청 값 검증 (@NotBlank 등)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // H2: 설치 없이 쓰는 인메모리 DB (서버 끄면 데이터 사라짐)
+    runtimeOnly 'com.h2database:h2'
+
+    // 테스트 (JUnit 5, MockMvc)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
