@@ -1,7 +1,8 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.5'
-    id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.springframework.boot' version '4.1.1'
 }
 
 group = 'com.example'
@@ -19,6 +20,10 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot BOM — 아래 의존성들의 버전을 한 곳에서 맞춘다.
+    // Boot 3.x의 io.spring.dependency-management 플러그인은 Boot 4에서 자동 연동되지 않아 Gradle 기본 platform() 사용
+    implementation platform(SpringBootPlugin.BOM_COORDINATES)
+
     // REST API (내장 Tomcat + Spring MVC + Jackson JSON)
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -31,8 +36,13 @@ dependencies {
     // H2: 설치 없이 쓰는 인메모리 DB (서버 끄면 데이터 사라짐)
     runtimeOnly 'com.h2database:h2'
 
+    // H2 웹 콘솔 (/h2-console). Boot 4부터 별도 모듈로 분리됨 — 없으면 spring.h2.console.* 설정이 무시된다
+    runtimeOnly 'org.springframework.boot:spring-boot-h2console'
+
     // 테스트 (JUnit 5, MockMvc)
+    // Boot 4부터 @AutoConfigureMockMvc 가 spring-boot-webmvc-test 모듈로 분리됨
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
