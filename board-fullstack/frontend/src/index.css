@@ -71,6 +71,20 @@ body {
   background: #fef2f2;
 }
 
+/* 검색 */
+.search-box {
+  margin-bottom: 12px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccd;
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+}
+
 /* 목록 */
 .post-table {
   width: 100%;

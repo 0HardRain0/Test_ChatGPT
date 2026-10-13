@@ -1,5 +1,6 @@
 package com.example.board.post;
 
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -69,6 +70,37 @@ class PostControllerTest {
         mockMvc.perform(get(location))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status").value(404));
+    }
+
+    @Test
+    void 목록은_검색_파라미터를_무시하고_전체를_id_내림차순으로_준다() throws Exception {
+        // 결정 사항: 검색은 GET /api/posts, 파라미터 없음 → 검색어가 쿼리스트링으로 와도 서버는 걸러내지 않는다 (필터는 프론트)
+        int before = JsonPath.read(
+                mockMvc.perform(get("/api/posts")).andReturn().getResponse().getContentAsString(), "$.length()");
+
+        String first = create("첫 글", "홍길동");
+        String second = create("둘째 글", "김철수");
+
+        mockMvc.perform(get("/api/posts").param("q", "홍길동"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(before + 2)))       // 파라미터로 걸러지지 않음
+                .andExpect(jsonPath("$[0].id").value(idOf(second)))   // 최신(id 큰) 글이 먼저
+                .andExpect(jsonPath("$[1].id").value(idOf(first)));
+
+        mockMvc.perform(delete(first)).andExpect(status().isNoContent());
+        mockMvc.perform(delete(second)).andExpect(status().isNoContent());
+    }
+
+    private String create(String title, String author) throws Exception {
+        return mockMvc.perform(post("/api/posts")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"title\": \"" + title + "\", \"author\": \"" + author + "\", \"content\": \"내용\"}"))
+                .andExpect(status().isCreated())
+                .andReturn().getResponse().getHeader("Location");
+    }
+
+    private static int idOf(String location) {
+        return Integer.parseInt(location.substring(location.lastIndexOf('/') + 1));
     }
 
     @Test
